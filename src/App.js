@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import LocationList       from './components/LocationList'
+import { Grid, Row, Col } from 'react-flexbox-grid'
+const cities = [
+  'Buenos Aires, ar',
+  'Canada, ca',
+  'Finland, fi',
+  'London, uk',
+  'France, fr'
+]
+
+const clickApp = city => {
+  console.log(`clickApp ${city}`)
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Grid >
+        <Row>
+          <Col xs={12} >
+            <h1>ForeCast Extended</h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={ 12 } md={ 6 } >
+            <LocationList cities={cities} onLListClick={ clickApp } />
+          </Col>
+          <Col xs={12} md={6} >
+            <div style={({ background: '#999', height: '100vh'})}>
+              <h2>Hello</h2>
+            </div>
+          </Col>
+        </Row>
+      </Grid>
     </div>
   );
 }
 
-export default App;
+export default App
