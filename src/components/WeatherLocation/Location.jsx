@@ -4,7 +4,7 @@ import './styles.sass'
 
 const Location = ({ city = 'México' }) => ( 
     <div className="cont_location">
-      <h2>{city}</h2>
+      <h2>{ city }</h2>
     </div>
   )
 

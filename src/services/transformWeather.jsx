@@ -47,5 +47,11 @@ const transformWeather = weatherData => {
    }
    return data
 }
-
+export const transformWeatherTwo =  ({ list }) => {
+    return list.filter( date => {
+      const { dt_txt }  = date,
+            reg         = /(09:00)|(12:00)|(18:00)/g
+      return dt_txt.match( reg ) ? date : ''
+    } )
+}
 export default transformWeather

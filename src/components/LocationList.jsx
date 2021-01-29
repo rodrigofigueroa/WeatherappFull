@@ -1,11 +1,11 @@
 import React            from 'react'
 import PropTypes        from 'prop-types'
 import WeatherLocation  from './WeatherLocation/';
-
+import './styles.sass'
 
 const LocationList = ({ cities, onLListClick }) => {
   const onLocationListClick = city => {
-    console.log( 'onLocationListClick' )
+    // console.log( 'onLocationListClick' )
     onLListClick( city )
   }
   const arrayToComponent = cities => {
@@ -20,7 +20,9 @@ const LocationList = ({ cities, onLListClick }) => {
 
   return (
     <main>
-      { arrayToComponent( cities ) }
+      <div className="locationList">
+        { arrayToComponent( cities ) }
+      </div>
     </main>
   )
 }

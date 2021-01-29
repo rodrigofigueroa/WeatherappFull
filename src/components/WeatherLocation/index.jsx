@@ -9,6 +9,13 @@ import './styles.sass'
 const KEY = `f8257f21948f8e7cd332a4a95c01c558`
 const URL = `https://api.openweathermap.org/data/2.5/weather`
 
+// const dataBefore = {
+//   humidity: 12,
+//   temperature: 12,
+//   wind: 12,
+//   weaterState: 'cloudy'
+// }
+
 class WeatherLocation extends React.Component{
 
   constructor({ city }){
@@ -20,16 +27,18 @@ class WeatherLocation extends React.Component{
   }
 
   weatherUpdateCity = () => {
-    let data = {}
-    const { city } = this.state
+    let data            = {}
+    const { city }      = this.state
     const weatherAPIKey = `${URL}?q=${city}&units=metric&appid=${ KEY }`
+
     fetch( weatherAPIKey )
-    .then( first => first.json() )
-    .then( weatherData => {
-      data = transformWeather( weatherData )
-      this.setState({ data })
-    } )
-    .catch( err => console.error( err )  )
+      .then( first => first.json() )
+      .then( weatherData => {
+        data = transformWeather( weatherData )
+        console.log( data )
+        this.setState({ data })
+      } )
+      .catch( err => console.error( err )  )
   }
 
   componentDidMount(){
@@ -46,10 +55,8 @@ class WeatherLocation extends React.Component{
           <Location city={ city } />
           { 
             data 
-              ? 
-                <WeatherData data={ data } />
-              : 
-              <div className="ske">
+            ? <WeatherData data={ data } />
+            : <div className="ske">
                 <Skeleton variant={'circle'} width={150} height={150} animation={"pulse"} />
                 <Skeleton variant={'text'} width={150} height={130} animation={"pulse"} />
               </div>

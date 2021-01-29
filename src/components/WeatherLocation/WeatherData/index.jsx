@@ -4,7 +4,12 @@ import WeatherTemperature   from './WeatherTemperature'
 import WeatherExtraInfo     from './WeatherExtraInfo'
 import './styles.sass'
 
-const WeatherData = ({ data }) => {
+const WeatherData = ({ data = {
+  temperature: 12,
+  weatherState: 'normal',
+  hunidity: 45,
+  wind: 8
+} }) => {
   const {
     temperature,
     weatherState,
@@ -27,10 +32,10 @@ const WeatherData = ({ data }) => {
 
 WeatherData.propTypes = {
   data: PropTypes.shape({
-    temperature: PropTypes.number.isRequired,
-    weatherState: PropTypes.string.isRequired,
-    humidity: PropTypes.number.isRequired,
-    wind: PropTypes.number.isRequired
+    wind:         PropTypes.number.isRequired,
+    temperature:  PropTypes.number.isRequired,
+    humidity:     PropTypes.number.isRequired,
+    weatherState: PropTypes.string.isRequired
   })
 }
 

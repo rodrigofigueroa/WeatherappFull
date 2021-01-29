@@ -23,7 +23,7 @@ const WeatherIconsCheck = props => {
     case DRIZZLE:
       return 'day-showers'
     default: 
-    return 'cloudy-windy'
+      return 'cloudy-windy'
   }
 }
 
@@ -41,8 +41,8 @@ const WeatherTemperature = ({ temperature = 12, weatherState = 'clody' }) =>(
   )
 
   WeatherTemperature.propTypes = {
+    weatherState:  PropTypes.string.isRequired,
     temperature:  PropTypes.number.isRequired,
-    weatherState: PropTypes.string.isRequired
   }
 
 export default WeatherTemperature
