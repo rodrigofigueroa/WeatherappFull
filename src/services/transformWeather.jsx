@@ -48,10 +48,18 @@ const transformWeather = weatherData => {
    return data
 }
 export const transformWeatherTwo =  ({ list }) => {
-    return list.filter( date => {
-      const { dt_txt }  = date,
-            reg         = /(09:00)|(12:00)|(18:00)/g
-      return dt_txt.match( reg ) ? date : ''
-    } )
+    return list.filter( 
+      ({ dt_txt }) => dt_txt.match( /(09:00)|(12:00)|(18:00)/g ) ? dt_txt : '' )
+      .map( item => {
+      const date = new Date( item.dt_txt ),
+            week = [ 'Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab' ]
+      return {
+        weekDay: {
+          day: week[ date.getDay() ],
+          hour: `${ date.getHours() }`,
+          data: transformWeather( item )
+        }
+      }
+    })
 }
 export default transformWeather
