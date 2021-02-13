@@ -35,7 +35,7 @@ class WeatherLocation extends React.Component{
       .then( first => first.json() )
       .then( weatherData => {
         data = transformWeather( weatherData )
-        console.log( data )
+        //console.log( data )
         this.setState({ data })
       } )
       .catch( err => console.error( err )  )

@@ -21,16 +21,13 @@ class App extends React.Component {
   constructor(){
     super()
     this.state = { city: null }
-    // console.log( 'constructor' )
   }
 
   clickApp = city => {
     this.setState({ city })
-    // console.log(`clickApp ${city}`)
   }
 
   render(){
-    // console.log('render')
     const { city } = this.state
     return (
       <div className="App">
@@ -55,9 +52,9 @@ class App extends React.Component {
             </Col>
             <Col xs={12} md={6} >
               <Paper elevation={3}>
-                <div style={({ background: '#999', height: '100vh'})}>
+                <div style={({ background: '#999', height: 'auto'})}>
                   {
-                    city && <ForecastExtended city={ city } />
+                    city ? <ForecastExtended city={ city } /> : ''
                   }
                 </div>
               </Paper>
